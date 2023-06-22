@@ -1,0 +1,67 @@
+﻿@model DogGo.Models.Owner
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Owner</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*Put a breakpoint in your controller code so you can inspect the owner object 
+                that gets passed as a parameter. Notice that the Id of the owner is now zero. 
+                The reason for this is that we took the Id field out of the form, so when it 
+                got posted back up to the server, it didn't have an Id value so C# defaults that value to zero.
+
+                The trick is to hide the input field in the view, but keep it in the form. Put 
+                the Id input field back in the form and give it a type=hidden attribute, and 
+                delete the <label> and <span> tags.*@
+            
+            <div class="form-group">
+                @*<label asp-for="Id" class="control-label"></label>*@
+                <input asp-for="Id" type="hidden" />
+                @*<span asp-validation-for="Id" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NeighborhoodId" class="control-label"></label>
+                <input asp-for="NeighborhoodId" class="form-control" />
+                <span asp-validation-for="NeighborhoodId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
