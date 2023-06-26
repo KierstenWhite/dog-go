@@ -16,6 +16,26 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\user\workspace\sql\DogGo\DogGo
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/user/workspace/sql/DogGo/DogGo/Views/Dogs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9nc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/workspace/sql/DogGo/DogGo/Views/Dogs/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9nc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/workspace/sql/DogGo/DogGo/Views/Dogs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9nc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/workspace/sql/DogGo/DogGo/Views/Dogs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9nc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/workspace/sql/DogGo/DogGo/Views/Dogs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9nc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/user/workspace/sql/DogGo/DogGo/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
