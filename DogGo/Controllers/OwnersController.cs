@@ -89,7 +89,16 @@ namespace DogGo.Controllers
                 return NotFound();
             }
 
-            return View(owner);
+            List<Neighborhood> neighborhoods = _neighborhoodRepo.GetAll();
+
+            OwnerFormViewModel vm = new OwnerFormViewModel()
+            {
+                //change it to owner instead of new Owner() so the edit is pre-populated with information
+                Owner = owner,
+                Neighborhoods = neighborhoods
+            };
+
+            return View(vm);
         }
 
         // POST: Owners/Edit/5
