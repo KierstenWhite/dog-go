@@ -3,6 +3,8 @@ using DogGo.Models.ViewModels;
 using DogGo.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.Intrinsics.X86;
+using System.Security.Claims;
 
 namespace DogGo.Controllers
 {
@@ -24,12 +26,40 @@ namespace DogGo.Controllers
             _neighborhoodRepo = neighborhoodRepository;
         }
 
-        // GET: Walkers
-        public ActionResult Index()
+        //Update the Index method in the walkers controller
+        //so that owners only see walkers in their own neighborhood.
+        //Hint: Use the OwnerRepository to look up the owner by Id
+        //before getting the walkers.
+
+        private int GetCurrentUserId()
         {
+            string id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(id))
+            {
+                return 0;
+            }
+            else
+            {
+                return int.Parse(id);
+            } 
+        }
+
+        // GET: Walkers
+        public ActionResult Index(int id)
+        {
+            int userId = GetCurrentUserId();
+            Owner owner = _ownerRepo.GetOwnerById(userId);
             List<Walker> walkers = _walkerRepo.GetAllWalkers();
 
-            return View(walkers);
+            if (userId > 0)
+            {
+                List<Walker> neighborhoodWalkers = walkers.Where(walker => walker.NeighborhoodId == owner.NeighborhoodId).ToList();
+                return View(neighborhoodWalkers);
+            }
+            else
+            {
+                return View(walkers);
+            }
         }
 
         // GET: Walkers/Details/5
