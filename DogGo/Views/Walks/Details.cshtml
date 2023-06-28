@@ -1,48 +1,61 @@
-﻿@model DogGo.Models.Walk
+﻿@*@model DogGo.Models.ViewModels.WalkerProfileViewModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Walker Profile";
 }
 
-<h1>Details</h1>
+<div>
+  <h1 class="mb-4">@Model.Walker.Name</h1>
 
-<div>
-    <h4>Walk</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Duration)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Duration)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.WalkerId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.WalkerId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DogId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DogId)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>
+  <section class="container">
+    <img
+      style="width:100px;float:left;margin-right:20px"
+      src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Font_Awesome_5_regular_user-circle.svg"
+    />
+    <div>
+      <label class="font-weight-bold">Name:</label>
+      <span>@Model.Walker.Name</span>
+    </div>
+    <div>
+      <label class="font-weight-bold">Neighborhood:</label>
+      <span>@Model.Walker.Neighborhood</span>
+    </div>
+  </section>
+
+  <hr class="mt-5" />
+  <div class="clearfix"></div>
+
+  <div class="row">
+    <section class="col-8 container mt-5">
+      <h1 class="text-left">Rent Walks</h1>
+
+      <div class="row">
+        @foreach (Walk walk in Model.Walks) {
+        <div class="card m-4" style="width: 18rem;">
+                        <dl class="row">
+                            <dt class="col-sm-2">
+                                Date
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Model.Walk.Date
+                               A Date
+                            </dd>
+                            <dt class="col-sm-2">
+                                Client
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Model.Owner.Name
+                           A Name
+                            </dd>
+                            <dt class="col-sm-2">
+                               Duration
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.Walks.Duration)
+                               A Duration
+                            </dd>
+                            </dl>
+        </div>
+        }
+      </div>
+    </section>*@

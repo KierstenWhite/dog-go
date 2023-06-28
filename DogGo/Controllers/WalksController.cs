@@ -13,34 +13,39 @@ namespace DogGo.Controllers
         private readonly IDogRepository _dogRepo;
         private readonly IWalkerRepository _walkerRepo;
         private readonly IOwnerRepository _ownerRepo;
+        private readonly INeighborhoodRepository _neighborhoodRepo;
 
-        public WalksController(IWalkRepository walkRepository, IDogRepository dogRepository, IWalkerRepository walkerRepository, IOwnerRepository ownerRepository)
+        public WalksController(IWalkRepository walkRepository, IDogRepository dogRepository, IWalkerRepository walkerRepository, IOwnerRepository ownerRepository, INeighborhoodRepository neighborhoodRepository)
         {
             _walkRepo = walkRepository;
             _dogRepo = dogRepository;
             _walkerRepo = walkerRepository;
             _ownerRepo = ownerRepository;
+            _neighborhoodRepo = neighborhoodRepository;
         }
 
         // GET: WalksController
         public ActionResult Index()
         {
-            List<Walk> walks = _walkRepo.GetAllWalks();
+            //List<Walk> walks = _walkRepo.GetAllWalks();
 
-            return View(walks);
+            //return View(walks);
+            return View();
         }
 
         // GET: WalksController/Details/5
         public ActionResult Details(int id)
         {
-            Walker walker = _walkerRepo.GetWalkerById(id);
-            List<Walk> walks = _walkRepo.GetWalksByWalkerId(walker.Id);
 
-            WalkerProfileViewModel vm = new WalkerProfileViewModel()
-            {
-                Walker = walker,
-                Walks = walks
-            };
+            return View();
+            //Walker walker = _walkerRepo.GetWalkerById(id);
+            //List<Walk> walks = _walkRepo.GetWalksByWalkerId(walker.Id);
+
+            //WalkerProfileViewModel vm = new WalkerProfileViewModel()
+            //{
+            //    Walker = walker,
+            //    Walks = walks
+            //};
 
         //Walk walk = _walkRepo.GetWalkById(id);
 
@@ -49,7 +54,7 @@ namespace DogGo.Controllers
             //    return NotFound();
             //}
 
-            return View(vm);
+            //return View(vm);
         }
 
         // GET: WalksController/Create

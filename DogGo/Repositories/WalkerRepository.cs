@@ -1,4 +1,5 @@
 ﻿using DogGo.Models;
+using Humanizer;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
@@ -108,10 +109,16 @@ namespace DogGo.Repositories
                 conn.Open();
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
+
+                    //SELECT w.Id, w.[Name], w.ImageUrl, w.NeighborhoodId, n.[Name] AS NeighborhoodName
+                    //    FROM Walker w
+                    //    JOIN Neighborhood n ON w.NeighborhoodId = n.Id
+                    //    WHERE Walker.Id = @id
                     cmd.CommandText = @"
-                        SELECT w.Id, w.[Name], w.ImageUrl, n.Name AS NeighborhoodName
-                        FROM Walker w
-                        JOIN Neighborhood n ON w.NeighborhoodId = n.Id;
+                      SELECT Walker.Id, Walker.[Name], Walker.ImageUrl, Walker.NeighborhoodId, Neighborhood.[Name] AS NeighborhoodName
+                        FROM Walker
+                        JOIN Neighborhood ON Neighborhood.Id = Walker.NeighborhoodId
+                        WHERE Walker.Id = @id
                     ";
 
                     cmd.Parameters.AddWithValue("@id", id);
@@ -125,7 +132,7 @@ namespace DogGo.Repositories
                             Id = reader.GetInt32(reader.GetOrdinal("Id")),
                             Name = reader.GetString(reader.GetOrdinal("Name")),
                             ImageUrl = reader.GetString(reader.GetOrdinal("ImageUrl")),
-                            //NeighborhoodId = reader.GetInt32(reader.GetOrdinal("NeighborhoodId")),
+                            NeighborhoodId = reader.GetInt32(reader.GetOrdinal("NeighborhoodId")),
                             Neighborhood = new Neighborhood()
                             {
                                 Name = reader.GetString(reader.GetOrdinal("NeighborhoodName"))
