@@ -20,6 +20,7 @@ namespace DogGo.Controllers
             _dogRepo = dogRepository;
         }
         // GET: DogsController
+        [Authorize]
         public ActionResult Index()
         {
             int ownerId = GetCurrentUserId();
@@ -43,6 +44,7 @@ namespace DogGo.Controllers
         }
 
         // GET: DogsController/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
