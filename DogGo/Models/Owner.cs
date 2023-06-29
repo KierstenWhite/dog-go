@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+
 
 namespace DogGo.Models
 {
@@ -15,6 +17,7 @@ namespace DogGo.Models
         public string Name { get; set; }
 
         [Phone]
+        [DisplayName("Phone Number")]
         public string Phone { get; set; }
 
         [Required]
@@ -22,6 +25,7 @@ namespace DogGo.Models
         public string Address { get; set; }
 
         [Required]
+        [DisplayName("Neighborhood")]
         public int NeighborhoodId { get; set; }
 
         public Neighborhood Neighborhood { get; set; }

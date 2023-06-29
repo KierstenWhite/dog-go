@@ -6,7 +6,7 @@ namespace DogGo.Models
     {
         public int Id { get; set; }
 
-        //[DisplayFormat(DataFormatString = "{0:MMM dd, yyyy")]
+        [DisplayFormat(DataFormatString = "{0:MMM dd, yyyy}")]
         public DateTime Date { get; set; }
 
         public int Duration { get; set; }
